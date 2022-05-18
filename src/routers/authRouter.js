@@ -7,6 +7,6 @@ import { userExists } from "../middlewares/authMiddleware.js";
 const authRouter = Router();
 
 authRouter.post('/sign-in', validSchemaSignIn, userExists, postSignInUser);
-authRouter.post('/sign-up', validSchemaSignUp, postSignUpUser);
+authRouter.post('/sign-up', validSchemaSignUp, userExists, postSignUpUser);
 
 export default authRouter;

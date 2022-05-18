@@ -1,5 +1,5 @@
 import chalk from "chalk";
-import db from "../mongoDB";
+import db from "../mongoDB.js";
 
 export async function userExists(req, res, next){
     const { email } = req.body;

@@ -1,5 +1,5 @@
 import chalk from "chalk";
-import { schemaSignIn, schemaSignUp } from "../schemas/authSchema";
+import { schemaSignIn, schemaSignUp } from "../schemas/authSchema.js";
 
 function validSchemaSignIn(req, res, next){
     console.log('objeto no body', req.body);
