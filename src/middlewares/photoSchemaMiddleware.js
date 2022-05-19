@@ -1,9 +1,9 @@
-import schemaPhoto from "../schemas/photoSchema";
+import schemaPhoto from "../schemas/photoSchema.js";
 
 export function validateSchemaPhoto(req, res, next){
     const { image } = req.body;
 
-    const validation = schemaPhoto.valid({ image }, { abortEarly: false });
+    const validation = schemaPhoto.validate({ image }, { abortEarly: false });
     console.log(validation);
 
     const { error } = validation;

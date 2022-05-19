@@ -5,7 +5,6 @@ import chalk from "chalk";
 import db from "../mongoDB.js";
 
 export async function postSignUpUser(req, res){
-    console.log(chalk.pink('Vou fazer uma requisição legal...'));
     const { name, email, password } = req.body;
     console.log(name, email, password);
 
@@ -27,7 +26,6 @@ export async function postSignUpUser(req, res){
 }
 
 export async function postSignInUser(req, res){
-    console.log(chalk.pink('Vou fazer uma requisição legal...'));
     const { password } = req.body;
     
     try {

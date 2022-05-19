@@ -21,13 +21,18 @@ export async function sendPhotosUser(req, res){
         const { user, token } = res.locals;
         const { image } = req.body;
 
+        const photo = db.collection('photos').findOne({ image });
+        if(photo){
+            return res.status(400).send('Photo already exists');
+        }
+
         await db.collection('photos').insertOne({
             image,
             email: user.email,
             token,
-            date: dayjs.format('DD/MM/YYYY - HH:mm:ss')
+            date: dayjs().format('DD/MM/YYYY - HH:mm:ss:SSS')
         });
-        res.sendStatus(201);
+        res.sendStatus(200);
     } catch (error) {
         console.log(chalk.red('Erro ao conectar-se com o banco de dados'));
         res.sendStatus(500); 

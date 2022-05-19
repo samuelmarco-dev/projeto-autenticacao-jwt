@@ -5,7 +5,7 @@ import { schemaSignIn, schemaSignUp } from "../schemas/authSchema.js";
 function validSchemaSignIn(req, res, next){
     console.log('objeto in body', req.body);
 
-    const validation = schemaSignIn.valid(req.body, { abortEarly: false });
+    const validation = schemaSignIn.validate(req.body, { abortEarly: false });
     console.log(chalk.blue(validation));
 
     const { error } = validation;
@@ -19,7 +19,7 @@ function validSchemaSignIn(req, res, next){
 function validSchemaSignUp(req, res, next){
     console.log('objeto in body', req.body);
 
-    const validation = schemaSignUp.valid(req.body, { abortEarly: false });
+    const validation = schemaSignUp.validate(req.body, { abortEarly: false });
     console.log(chalk.blue(validation));
 
     const { error } = validation;

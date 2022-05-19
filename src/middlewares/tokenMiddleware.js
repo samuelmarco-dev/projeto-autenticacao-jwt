@@ -7,7 +7,7 @@ dotenv.config();
 export async function validToken(req, res, next){
     const { authorization } = req.headers;
     const token = authorization?.replace('Bearer', '').trim();
-    console.log('Token in request');
+    console.log('Token in request', token);
 
     if(!token){
         return res.status(401).send('Users do not have authorization for this request');
