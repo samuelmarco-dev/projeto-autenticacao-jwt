@@ -6,6 +6,8 @@ export async function userExists(req, res, next){
 
     try {
         const user = await db.collection('users').findOne({ email });
+        console.log('user in collection', user);
+
         res.locals = user;
         next();
     } catch (error) {

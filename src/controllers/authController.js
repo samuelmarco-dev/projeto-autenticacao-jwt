@@ -28,7 +28,7 @@ export async function postSignUpUser(req, res){
 
 export async function postSignInUser(req, res){
     console.log(chalk.pink('Vou fazer uma requisição legal...'));
-    const { email, password } = req.body;
+    const { password } = req.body;
     
     try {
         const user = res.locals;
