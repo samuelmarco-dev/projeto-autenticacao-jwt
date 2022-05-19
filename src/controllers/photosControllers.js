@@ -18,11 +18,8 @@ export async function seePhotosUser(req, res){
 
 export async function sendPhotosUser(req, res){
     try {
-        const { session, token } = res.locals;
+        const { user, token } = res.locals;
         const { image } = req.body;
-
-        const user = await db.collection('users').findOne({ _id: session.idUser });
-        console.log('User found', user);
 
         await db.collection('photos').insertOne({
             image,

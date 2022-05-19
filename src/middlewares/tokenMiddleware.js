@@ -24,7 +24,13 @@ export async function validToken(req, res, next){
             return res.status(404).send('User not found');
         }
 
-        res.locals = { token, session };
+        const user = await db.collection('users').findOne({ _id: session.idUser });
+        console.log('User in users', user);
+        if(!user){
+            return res.status(404).send('User not found');
+        }
+
+        res.locals = { token, session, user };
         next();
     } catch (error) {
         console.log(chalk.red('Erro ao validar o token com base no JWT'));
