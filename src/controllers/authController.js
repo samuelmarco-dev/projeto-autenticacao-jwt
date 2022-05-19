@@ -7,6 +7,7 @@ import db from "../mongoDB.js";
 export async function postSignUpUser(req, res){
     console.log(chalk.pink('Vou fazer uma requisição legal...'));
     const { name, email, password } = req.body;
+    console.log(name, email, password);
 
     try {
         const user = res.locals;
@@ -14,7 +15,6 @@ export async function postSignUpUser(req, res){
             return res.status(409).send('User already exists');
         }
 
-        //opcional: salt = await bcrypt.genSalt(12);
         const passwordEncrypted = bcrypt.hashSync(password, 10);
         await db.collection('users').insertOne({
             name, email, password: passwordEncrypted
@@ -32,6 +32,7 @@ export async function postSignInUser(req, res){
     
     try {
         const user = res.locals;
+        console.log('User found', user);
 
         if(user && bcrypt.compareSync(password, user.password)){
             const secretKey = process.env.JWT_SECRET;

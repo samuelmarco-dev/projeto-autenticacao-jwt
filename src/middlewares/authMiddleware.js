@@ -3,6 +3,7 @@ import db from "../mongoDB.js";
 
 export async function userExists(req, res, next){
     const { email } = req.body;
+    console.log('Email user', email);
 
     try {
         const user = await db.collection('users').findOne({ email });

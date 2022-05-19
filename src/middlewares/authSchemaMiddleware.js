@@ -1,8 +1,9 @@
 import chalk from "chalk";
+
 import { schemaSignIn, schemaSignUp } from "../schemas/authSchema.js";
 
 function validSchemaSignIn(req, res, next){
-    console.log('objeto no body', req.body);
+    console.log('objeto in body', req.body);
 
     const validation = schemaSignIn.valid(req.body, { abortEarly: false });
     console.log(chalk.blue(validation));
@@ -16,7 +17,7 @@ function validSchemaSignIn(req, res, next){
 }
 
 function validSchemaSignUp(req, res, next){
-    console.log('objeto no body', req.body);
+    console.log('objeto in body', req.body);
 
     const validation = schemaSignUp.valid(req.body, { abortEarly: false });
     console.log(chalk.blue(validation));
