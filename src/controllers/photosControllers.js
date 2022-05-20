@@ -20,8 +20,9 @@ export async function sendPhotosUser(req, res){
     try {
         const { user, token } = res.locals;
         const { image } = req.body;
+        console.log(user, token, image);
 
-        const photo = db.collection('photos').findOne({ image });
+        const photo = await db.collection('photos').findOne({ image });
         if(photo){
             return res.status(400).send('Photo already exists');
         }

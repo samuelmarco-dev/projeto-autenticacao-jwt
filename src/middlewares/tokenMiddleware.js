@@ -1,5 +1,7 @@
-import db from '../mongoDB.js';
+import { ObjectId } from 'mongodb';
 import jwt from 'jsonwebtoken';
+
+import db from '../mongoDB.js';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -24,7 +26,7 @@ export async function validToken(req, res, next){
             return res.status(404).send('User not found');
         }
 
-        const user = await db.collection('users').findOne({ _id: session.idUser });
+        const user = await db.collection('users').findOne({ _id: new ObjectId(session.idUser) });
         console.log('User in users', user);
         if(!user){
             return res.status(404).send('User not found');

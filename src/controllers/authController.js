@@ -40,7 +40,7 @@ export async function postSignInUser(req, res){
             }, secretKey, validityKey);
 
             await db.collection('sessions').insertOne({ idUser: user._id, token})
-            return res.status(200).send(token);
+            return res.status(200).send({token, name: user.name});
         }   
         res.sendStatus(404);
     } catch (error) {
