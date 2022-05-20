@@ -1,2 +1,2 @@
 # projeto-autenticacao-jwt
-Prática com JWT em Cadastro e Login
+Prática com JWT em CRUD
